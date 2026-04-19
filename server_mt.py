@@ -48,7 +48,6 @@ def process_request(data):
         return "Erro no processamento"
 
 def handle_client(conn, addr):
-    """Processa todas as requisições de um cliente em uma thread dedicada."""
     print(f"[MT-Server] Nova thread para cliente {addr}")
     try:
         while True:
@@ -71,11 +70,6 @@ def handle_client(conn, addr):
 
 
 def run_server(host=HOST, port=PORT, stop_event=None, ready_event=None):
-    """
-    Inicia o servidor MT.
-    stop_event  : threading.Event  – sinaliza parada (usado pelo experimento)
-    ready_event : threading.Event  – sinalizado quando o servidor está pronto
-    """
     srv = socket(AF_INET, SOCK_STREAM)
     srv.setsockopt(SOL_SOCKET, SO_REUSEADDR, 1)
     srv.bind((host, port))
