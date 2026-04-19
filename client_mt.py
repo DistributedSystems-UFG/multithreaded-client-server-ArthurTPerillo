@@ -18,10 +18,6 @@ def generate_request():
 
 
 def send_request(req_id, msg, host, port, results, lock):
-    """
-    Envia UMA requisição ao servidor e armazena o resultado.
-    Cada chamada cria sua própria conexão TCP.
-    """
     try:
         s = socket(AF_INET, SOCK_STREAM)
         s.connect((host, port))
@@ -41,10 +37,6 @@ def send_request(req_id, msg, host, port, results, lock):
 
 
 def run_client_mt(n_requests=100, host=HOST, port=PORT, verbose=False):
-    """
-    Dispara n_requests threads em paralelo, cada uma enviando uma requisição.
-    Retorna o tempo total decorrido e os resultados.
-    """
     results = {}
     lock    = threading.Lock()
     threads = []
