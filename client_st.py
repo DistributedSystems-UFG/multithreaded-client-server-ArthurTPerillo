@@ -16,10 +16,6 @@ def generate_request():
 
 
 def run_client_st(n_requests=100, host=HOST, port=PORT_ST, verbose=False):
-    """
-    Envia n_requests requisições sequencialmente por uma única conexão.
-    Retorna o tempo total decorrido e os resultados.
-    """
     results = {}
     errors  = 0
 
